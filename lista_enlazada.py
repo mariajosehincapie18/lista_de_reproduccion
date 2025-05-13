@@ -68,21 +68,47 @@ class DoubleLinkedList:
         #atualizamos los punteros  de los nodos adyacentes
         prev_node.next = new_node
         current_node.prev = new_node
+    self.__size +=1
         
   def delete_at(self, pos):
-    ...
+    if(pos > self.__size-1):
+      raise IndexError("índice inválido")
+    current_node = self.__head
+    if (pos == 0):
+      self.__head = None
+      self.__tail = None
+      
+
+    #ultimo nodo
+    elif (pos == self.__size -1):
+      self.__tail = self.__tail.prev
+      self.__tail.next = self.__head
+      self.__head.prev = self.__tail
+      
+
+    else:
+      for _ in range(pos):
+        current_node = current_node.next
+      current_node.prev.next = current_node.next
+      current_node.next.prev = current_node.prev
+
+    self.__size -=1
+
+      
 
   def traverse(self):
     current_node = self.__head #punto de partida
-    while(current_node is not None):
-      print(current_node.value)
+    for _ in range(self.__size):
+      yield current_node
       current_node = current_node.next
+    
 
   def invtraverse(self):
     current_node = self.__tail #punto de partida
-    while(current_node is not None):
-      print(current_node.value)
+    for _ in range(self.__size):
+      yield current_node
       current_node = current_node.prev
+    
 
   def __repr__(self):
     if self.__head is None:
@@ -94,6 +120,11 @@ class DoubleLinkedList:
       current= current.next
     return "<->".join(values)
   
+
+
+  
+
+
   
 
 
