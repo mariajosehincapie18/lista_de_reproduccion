@@ -108,6 +108,9 @@ class DoubleLinkedList:
     for _ in range(self.__size):
       yield current_node
       current_node = current_node.prev
+  @property
+  def size(self):
+    return self.__size
     
 
   def __repr__(self):
@@ -119,6 +122,10 @@ class DoubleLinkedList:
       values.append(str(current))
       current= current.next
     return "<->".join(values)
+  
+
+
+
   
 
 

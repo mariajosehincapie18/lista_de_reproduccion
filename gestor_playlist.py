@@ -7,7 +7,7 @@ class Gestor_paylist():
         self.playlist= DoubleLinkedList()
 
     def agregar_cancion_a_playlist(self, titulo:str, artista:str, duracion:int):
-        if (self.playlist._DoubleLinkedList__size) == 0:
+        if (self.playlist.size) == 0:
             if duracion < 10 or duracion > 15:
                 print("no es posible agregar a la playlist tiempo excedido")
                 return
@@ -44,23 +44,15 @@ class Gestor_paylist():
             
         print(f"nose encontro el {titulo} en esta playlist")
 
-    def avanzar_a_la_siguiente_cancion(self):
-        cancion_actual = self.playlist.traverse()
-        for cancion in cancion_actual:
-            print(f"Reproduciendo {cancion.value.titulo} -- {cancion.value.artista}")
-            time.sleep(cancion.value.duracion)
+
+
             
 
 
 
-gestor= Gestor_paylist()
-gestor.agregar_cancion_a_playlist("s91", "karol g", 10)
-gestor.agregar_cancion_a_playlist("milagros", "karol g", 15 )
-gestor.agregar_cancion_a_playlist("romantico de lunes", " feid", 11 )
-gestor.agregar_cancion_a_playlist("dia tras dia", " andres cepeda", 10 )
-gestor.agregar_cancion_a_playlist("admv", " maluma", 13 )
-print(gestor.playlist)
-gestor.avanzar_a_la_siguiente_cancion
+
+
+
 
 
 
