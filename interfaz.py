@@ -1,4 +1,5 @@
 from gestor_playlist import Gestor_paylist
+from reproductor import Reproductor
 
 class Interfaz():
 
@@ -8,7 +9,9 @@ class Interfaz():
             print("1. Agregar cancion")
             print("2. Mostrar playlist")
             print(" 3. Eliminar cancion")
-            print("4. Salir")
+            print("4. Avanzar a la siguiente cancion")
+            print("5. Retroceder cancion: ")
+            print("7. Salir")
 
             opcion= input("Eligen una opcion: ")
 
@@ -23,8 +26,15 @@ class Interfaz():
             elif opcion == "3":
                 titulo = input("Ingresa el titulo a eliminar: ")
                 gestor.eliminar_cancion_de_la_playlist(titulo)
-
             elif opcion == "4":
+                reproductor.iniciar_reproduccion()
+                reproductor.avanzar_a_la_siguiente_cancion()
+            elif opcion == "5":
+                reproductor.iniciar_reproduccion()
+                reproductor.retroceder_cancion()
+                  
+
+            elif opcion == "7":
                 gestor.guardar_playlist()
                 break
 
@@ -32,5 +42,6 @@ class Interfaz():
 
 gestor = Gestor_paylist()
 gestor.cargar_playlist()
+reproductor = Reproductor(gestor)
 interfaz = Interfaz()
 interfaz.mostrar_menu()

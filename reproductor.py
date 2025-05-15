@@ -1,5 +1,6 @@
 import time
 import random
+from gestor_playlist import Gestor_paylist
 
 class Reproductor():
     def __init__(self, gestor_playlist: Gestor_paylist):
