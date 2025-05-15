@@ -71,22 +71,27 @@ class DoubleLinkedList:
     self.__size +=1
         
   def delete_at(self, pos):
-    if(pos > self.__size-1):
+    if(pos > self.__size-1) or (self.__size == 0):
       raise IndexError("índice inválido")
-    current_node = self.__head
-    if (pos == 0):
+    
+    if  (self.__size == 1):
       self.__head = None
-      self.__tail = None
-      
+      self.tail = None
 
-    #ultimo nodo
+#eliminar en la posicion 0 head
+    elif (pos == 0):
+      self.__head =self.__head.next
+      self.__head.prev = self.__tail
+      self.__tail.next = self.__head
+      
+ #ultimo nodo
     elif (pos == self.__size -1):
       self.__tail = self.__tail.prev
       self.__tail.next = self.__head
       self.__head.prev = self.__tail
       
-
     else:
+      current_node = self.__head
       for _ in range(pos):
         current_node = current_node.next
       current_node.prev.next = current_node.next
