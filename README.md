@@ -72,3 +72,53 @@ Mensajes claros y visualmente diferenciados (por ejemplo, colores o símbolos AS
 Animaciones sencillas (por ejemplo, mostrar que la canción se está reproduciendo con una barra de progreso).
 Indicadores visuales de la canción actual en la playlist.
 
+📌 Ejemplo de Ejecución Esperada
+📝 Menú Principal
+🎵 Bienvenido a tu Playlist Interactiva 🎵
+1️⃣ Agregar canción 
+2️⃣ Avanzar a la siguiente canción 
+3️⃣ Retroceder a la canción anterior 
+4️⃣ Eliminar una canción 
+5️⃣ Mostrar canción en reproducción 
+6️⃣ Mostrar toda la playlist 
+7️⃣ Activar modo aleatorio  
+8️⃣ Adelantar una canción
+9️⃣ Generar una subplaylist 
+🔟 Salir
+Seleccione una opción: _
+
+➕ Agregar una Canción
+Ingrese el título: Bohemian Rhapsody  
+Ingrese el artista: Queen  
+Ingrese la duración (10-15 seg): 12  
+✅ Canción agregada exitosamente.  
+
+▶️ Mostrar la Canción en Reproducción
+🎵 Ahora reproduciendo:  
+    🎧 Bohemian Rhapsody - Queen (12s)
+
+⏩ Adelantar un 50% de la Canción
+Ingrese el porcentaje de adelanto: 50  
+⌛ Adelantando 6s...  
+
+🔀 Activar Modo Aleatorio
+🔀 Modo aleatorio activado.  
+🎵 Nueva reproducción: Hotel California - Eagles (11s)  
+
+📑 Generar una Subplaylist
+Ingrese los títulos de las canciones a incluir en la subplaylist (separados por comas):  
+> Bohemian Rhapsody, Hotel California  
+✅ Subplaylist creada con 2 canciones.  
+1️⃣ Quiere reproducir esta nueva subplaylist? ___
+
+❌ Eliminar una Canción
+Ingrese el título de la canción a eliminar: Bohemian Rhapsody  
+✅ Canción eliminada exitosamente.  
+
+⏳ Simulación de Tiempo de Reproducción
+▶️ Reproduciendo: Smells Like Teen Spirit - Nirvana (14s)  
+⏳ 1s... 2s... 3s... (progresivamente hasta 14s)  / Barra de progreso
+🔄 Pasando a la siguiente canción... 
+
+
+

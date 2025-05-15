@@ -30,7 +30,6 @@ class DoubleLinkedList:
     self.__size += 1 #actualizo el size
 
   def insert(self, pos, value):
-    current_pos = 0 #posición actual
     current_node = self.__head #nodo inicial
     if(pos > self.__size-1):
       raise IndexError("índice inválido")
@@ -76,7 +75,7 @@ class DoubleLinkedList:
     
     if  (self.__size == 1):
       self.__head = None
-      self.tail = None
+      self.__tail = None
 
 #eliminar en la posicion 0 head
     elif (pos == 0):
