@@ -1,5 +1,5 @@
 from lista_enlazada import  DoubleLinkedList
-class Cancion ():
+class Cancion :
 
     def __init__(self, titulo: str, artista: str, duracion: int):
         self.titulo = titulo

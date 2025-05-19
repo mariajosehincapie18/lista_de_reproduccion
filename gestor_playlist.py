@@ -1,9 +1,10 @@
 from lista_enlazada import DoubleLinkedList
 from cancion import Cancion
 import os
-class Gestor_paylist():
+class Gestor_paylist:
     def __init__(self):
         self.playlist= DoubleLinkedList()
+        self.sub_playlist = None
 
     def agregar_cancion_a_playlist(self, titulo:str, artista:str, duracion:int):
         if (self.playlist.size) == 0:
@@ -57,7 +58,7 @@ class Gestor_paylist():
         with open(ruta_archivo, "w", encoding="utf-8") as i:
             canciones = self.playlist.traverse()
             for cancion in canciones:
-                i.write(f"{cancion.value.titulo}, {cancion.value.artista}, {cancion.value.duracion} \n")
+                i.write(f"{cancion.value.titulo}, {cancion.value.artista}, {cancion.value.duracion}\n")
         print("✅ Playlist guardada exitosamente")
 
     def cargar_playlist(self, ruta_archivo ="playlist_principal.txt" ):
@@ -74,8 +75,85 @@ class Gestor_paylist():
                         self.playlist.append(Cancion(titulo, artista, int(duracion)))
             print("✅Playlist cargada desde el achivo")
         except FileNotFoundError:
-            print("⚠️ No se encontro el archivo de playlist: ")           
+            print("⚠️ No se encontro el archivo de playlist: ")
 
+
+    def generar_sub_playlist (self):
+        sub_playlist = DoubleLinkedList()  
+        canciones_disponibles= list(self.playlist.traverse())
+
+        print ("📂Ingresa los titulos de las canciones para la sub-playlsit: ")
+        while True:
+            titulo = input("Titulo('x' para terminar): ").strip()
+            if titulo.lower() == "x":
+                break
+
+            cancion_encontrada = None
+            for cancion in canciones_disponibles:
+                if cancion.value.titulo.lower() == titulo.lower():
+                    cancion_encontrada = cancion.value
+                    original = cancion.value
+                    cancion_encontrada = Cancion(original.titulo, original.artista, original.duracion)
+
+                    break
+
+            if cancion_encontrada is None:
+                print("⚠️ No se encontro en la playlist")
+                continue
+
+            ya_agregada = False
+            for cancion in sub_playlist.traverse():
+                if cancion.value.titulo.lower() == titulo.lower():
+                    ya_agregada = True
+                    break
+            
+            if ya_agregada:
+                print("⚠️ Esta cancion ya fue agregada a la subplaylist")
+            else:
+                sub_playlist.append(cancion_encontrada)
+                print(f"✅ '{titulo}' añadida. ")
+
+            
+        if sub_playlist.size > 0:
+            self.sub_playlist = sub_playlist
+            self.playlist_original = self.playlist
+            self.playlist = sub_playlist
+            print("🎵Subplaylist creada con exito. ")
+            return sub_playlist
+        else:
+            print("🚫No se agrego ninguna cancion. ")
+            return
+        
+
+    def agregar_cancion_a_sub_playlist(self, titulo: str):
+        if not self.sub_playlist:
+            print("⚠️ No estas trabajando sobre una subplaylist")
+            return
+        
+
+        for cancion in self.sub_playlist.traverse():
+            if cancion.value.titulo.lower() == titulo.lower():
+                print("⚠️  Esa cancion ya esta el subplaylist . ")
+                return
+            
+        for cancion in self.playlist.traverse():
+            if cancion.value.titulo.lower() == titulo.lower().lower:
+                nueva_cancion = Cancion(cancion.value.titulo, cancion.value.artista, cancion.value.duracion)
+                self.sub_playlist.append(nueva_cancion)
+                print(f"✅ {titulo} agregada a la subplaylsit. ")
+                return
+            
+        print(f"❌ La cancion {titulo} no se encontro en la playlist orginal.")
+
+
+    def volver_a_playlist_original(self):
+        if self.sub_playlist and self.playlist != self.playlist_original:
+            self.playlist = self.playlist_original
+            self.sub_playlist = None
+            print("🔁 Has salido de la sub playlist y vuelto a tu playlist principal.")
+
+        else:
+            print(" ⚠️ Ya estas en la playlist original")
 
 
 

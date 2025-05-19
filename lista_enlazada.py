@@ -115,6 +115,8 @@ class DoubleLinkedList:
   @property
   def size(self):
     return self.__size
+  
+
     
 
   def __repr__(self):

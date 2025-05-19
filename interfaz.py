@@ -1,7 +1,9 @@
 from gestor_playlist import Gestor_paylist
 from reproductor import Reproductor
 
-class Interfaz():
+class Interfaz:
+   
+    
 
     def mostrar_menu(self):
         while True:
@@ -21,11 +23,15 @@ class Interfaz():
             opcion= input("Eligen una opcion: ")
 
             if opcion == "1":
-                print("AGREGA TU NUEVA CANCION: ")
-                titulo = input("Titulo: ")
-                artista = input (" Artista: ")
-                duracion = int(input("Duracion: "))
-                gestor.agregar_cancion_a_playlist(titulo, artista, duracion)
+                if gestor.sub_playlist and gestor.playlist == gestor.sub_playlist:
+                    titulo = input("🎵 Ingresa el título de la canción a agregar desde la playlist original: ")
+                    gestor.agregar_cancion_a_sub_playlist(titulo)
+                else:
+                    print("AGREGA TU NUEVA CANCION: ")
+                    titulo = input("Titulo: ")
+                    artista = input (" Artista: ")
+                    duracion = int(input("Duracion: "))
+                    gestor.agregar_cancion_a_playlist(titulo, artista, duracion)
             elif opcion == "2":
                 gestor.mostrar_toda_playlist()
 
@@ -59,14 +65,26 @@ class Interfaz():
                     reproductor.adelantar_canciones(porcentaje)
                     seguir = input("Adelantar otra cancion (si/no):  ").lower()
                
-
+            elif opcion == "10":
+                sub_playlist = gestor.generar_sub_playlist()
+                if sub_playlist:
+                    print("🎧 Bienvenido a tu sub playlist")
+                    reproductor_sub = Reproductor(gestor)
+                    reproductor_sub.playlist = sub_playlist
+                    reproductor_sub.gestor_playlist.playlist = sub_playlist
+                    interfaz_sub = Interfaz()
+                    interfaz_sub.mostrar_menu
+            
                 
 
-        
-
             elif opcion == "x":
-                gestor.guardar_playlist()
-                break
+                if gestor.sub_playlist and gestor.playlist == gestor.sub_playlist:
+                    gestor.volver_a_playlist_original()
+                    interfaz.mostrar_menu()
+                    return
+                else:
+                    gestor.guardar_playlist()
+                    break
 
 
 

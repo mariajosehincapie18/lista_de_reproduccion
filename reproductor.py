@@ -51,7 +51,7 @@ class Reproductor():
         else:
             self.cancion_actual = self.cancion_actual.prev
             cancion = self.cancion_actual.value
-            print(f"⏭️ Reproduciendo cancion anterior: {cancion.titulo} -- {cancion.artista}")
+            print(f"⏮️ Reproduciendo cancion anterior: {cancion.titulo} -- {cancion.artista}")
             time.sleep(cancion.duracion)
 
     def reproducir_toda_playlist(self):
