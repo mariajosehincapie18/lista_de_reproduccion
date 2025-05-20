@@ -37,7 +37,7 @@ class Gestor_paylist:
     def eliminar_cancion_de_la_playlist(self, titulo:str):
         canciones = self.playlist.traverse()
         for i,cancion in  enumerate(canciones):
-            if cancion.value.titulo == titulo:
+            if cancion.value.titulo.lower() == titulo.lower():
                 self.playlist.delete_at(i)
                 print(f" 🗑️ cancion {titulo} borrada existosamente")
                 return
@@ -137,7 +137,7 @@ class Gestor_paylist:
                 return
             
         for cancion in self.playlist_original.traverse():
-            if cancion.value.titulo.lower() == titulo.lower().lower:
+            if cancion.value.titulo.lower() == titulo.lower():
                 nueva_cancion = Cancion(cancion.value.titulo, cancion.value.artista, cancion.value.duracion)
                 self.sub_playlist.append(nueva_cancion)
                 print(f"✅ {titulo} agregada a la subplaylsit. ")

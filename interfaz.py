@@ -2,9 +2,6 @@ from gestor_playlist import Gestor_paylist
 from reproductor import Reproductor
 
 class Interfaz:
-   
-    
-
     def mostrar_menu(self):
         while True:
             print("\n🎵 BIENVENIDO A TU PLAYLIST 🎵 ")
@@ -67,19 +64,25 @@ class Interfaz:
                
             elif opcion == "10":
                 sub_playlist = gestor.generar_sub_playlist()
-                if sub_playlist:
-                    print("🎧 Bienvenido a tu sub playlist")
-                    reproductor_sub = Reproductor(gestor)
-                    reproductor_sub.playlist = sub_playlist
-                    reproductor_sub.gestor_playlist.playlist = sub_playlist
-                    interfaz_sub = Interfaz()
-                    interfaz_sub.mostrar_menu()
-            
+                reproductor.cancion_actual = None
                 
-
+                print("Deseas trabajar con tu sub_plylist: (si/no)")
+                trbajar = input(" >>  ").strip().lower()
+                if trbajar == "si":
+                    if sub_playlist:
+                        print("🎧 Bienvenido a tu sub playlist 🎧")
+                        reproductor_sub = Reproductor(gestor)
+                        reproductor_sub.playlist = sub_playlist
+                        reproductor_sub.gestor_playlist.playlist = sub_playlist
+                        interfaz_sub = Interfaz()
+                        interfaz_sub.mostrar_menu()
+                else:
+                    ("Regresando al la playlist original")
+            
             elif opcion == "x":
                 if gestor.sub_playlist and gestor.playlist == gestor.sub_playlist:
                     gestor.volver_a_playlist_original()
+                    reproductor.cancion_actual = None
                     interfaz.mostrar_menu()
                     return
                 else:

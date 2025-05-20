@@ -5,7 +5,7 @@ from gestor_playlist import Gestor_paylist
 class Reproductor():
     def __init__(self, gestor_playlist: Gestor_paylist):
         self.gestor_playlist = gestor_playlist
-        self.playlist = gestor_playlist.playlist
+    
         self.cancion_actual = None
         
         
@@ -28,6 +28,8 @@ class Reproductor():
             time.sleep(cancion.duracion)
         else:
             print("🚫 No hay cancion en reproduccion")
+
+        
         
 
     def avanzar_a_la_siguiente_cancion(self):
@@ -55,7 +57,7 @@ class Reproductor():
             time.sleep(cancion.duracion)
 
     def reproducir_toda_playlist(self):
-        canciones = self.playlist.traverse()
+        canciones = self.gestor_playlist.playlist.traverse()
         if not canciones:
             print("⚠️ la playlista esta vacia")
  
