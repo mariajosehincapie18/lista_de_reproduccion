@@ -4,6 +4,7 @@ import os
 class Gestor_paylist:
     def __init__(self):
         self.playlist= DoubleLinkedList()
+        self.playlist_original = None
         self.sub_playlist = None
 
     def agregar_cancion_a_playlist(self, titulo:str, artista:str, duracion:int):
@@ -91,7 +92,6 @@ class Gestor_paylist:
             cancion_encontrada = None
             for cancion in canciones_disponibles:
                 if cancion.value.titulo.lower() == titulo.lower():
-                    cancion_encontrada = cancion.value
                     original = cancion.value
                     cancion_encontrada = Cancion(original.titulo, original.artista, original.duracion)
 
@@ -115,14 +115,14 @@ class Gestor_paylist:
 
             
         if sub_playlist.size > 0:
-            self.sub_playlist = sub_playlist
             self.playlist_original = self.playlist
+            self.sub_playlist = sub_playlist
             self.playlist = sub_playlist
             print("🎵Subplaylist creada con exito. ")
-            return sub_playlist
+        
         else:
             print("🚫No se agrego ninguna cancion. ")
-            return
+            
         
 
     def agregar_cancion_a_sub_playlist(self, titulo: str):
@@ -136,7 +136,7 @@ class Gestor_paylist:
                 print("⚠️  Esa cancion ya esta el subplaylist . ")
                 return
             
-        for cancion in self.playlist.traverse():
+        for cancion in self.playlist_original.traverse():
             if cancion.value.titulo.lower() == titulo.lower().lower:
                 nueva_cancion = Cancion(cancion.value.titulo, cancion.value.artista, cancion.value.duracion)
                 self.sub_playlist.append(nueva_cancion)

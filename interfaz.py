@@ -73,7 +73,7 @@ class Interfaz:
                     reproductor_sub.playlist = sub_playlist
                     reproductor_sub.gestor_playlist.playlist = sub_playlist
                     interfaz_sub = Interfaz()
-                    interfaz_sub.mostrar_menu
+                    interfaz_sub.mostrar_menu()
             
                 
 
