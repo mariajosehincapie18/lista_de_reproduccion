@@ -58,7 +58,7 @@ class Interfaz:
             elif opcion == "9":
                 seguir = "si"
                 while seguir == "si":
-                    porcentaje = int(input("INGRESA EL PORCENTAJE QUE QUIERES ADELANTAR TU CANCION"))
+                    porcentaje = int(input("INGRESA EL PORCENTAJE QUE QUIERES ADELANTAR TU CANCION:   "))
                     reproductor.adelantar_canciones(porcentaje)
                     seguir = input("Adelantar otra cancion (si/no):  ").lower()
                

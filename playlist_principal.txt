@@ -1,11 +1,5 @@
-milagros,      karol g, 12
-garcia,     kanny garcia, 13
-salio el sol, don omar, 15
-el barco, karol g, 11
-suele suceder, piso 21, 13
-otra vez, feid, 14
-california, feid, 11
-romantico de lunes, feid, 13
-dia tras dia, andres cepeda, 12
-a poca luz, rayan castro, 14
-angelito, don omar, 10
+anda sola,  don omar, 11
+bandolero,  don omar, 14
+romantico de lunes, feid, 11
+milagros, karol g, 13
+garcia, kanny, 15

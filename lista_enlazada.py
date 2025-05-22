@@ -103,18 +103,27 @@ class DoubleLinkedList:
   def traverse(self):
     current_node = self.__head #punto de partida
     for _ in range(self.__size):
-      yield current_node
+      print(current_node.value)
       current_node = current_node.next
     
 
   def invtraverse(self):
     current_node = self.__tail #punto de partida
     for _ in range(self.__size):
-      yield current_node
+      print(current_node.value)
       current_node = current_node.prev
+ 
   @property
   def size(self):
     return self.__size
+  
+  @property
+  def head(self):
+    return self.__head
+  
+  @property
+  def tail(self):
+    return self.__tail
   
 
     
