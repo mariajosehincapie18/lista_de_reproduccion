@@ -101,21 +101,21 @@ class Gestor_paylist:
                 if cancion_disponible.value.titulo.lower() == titulo.lower():
                     original = cancion_disponible.value
                     cancion_encontrada = Cancion(original.titulo, original.artista, original.duracion)
+                
                 cancion_disponible = cancion_disponible.next
-
-                break
 
             if cancion_encontrada is None:
                 print("⚠️ No se encontro en la playlist")
                 continue
 
             ya_agregada = False
-            cancion_ya_agregada= self.playlist.head
-            for _ in range(self.playlist.size) :
+            cancion_ya_agregada= sub_playlist.head
+            for _ in range(sub_playlist.size) :
                 if cancion_ya_agregada.value.titulo.lower() == titulo.lower():
                     ya_agregada = True
+
                 cancion_ya_agregada = cancion_ya_agregada.next
-                break
+                
             
             if ya_agregada:
                 print("⚠️ Esta cancion ya fue agregada a la subplaylist")
@@ -155,8 +155,11 @@ class Gestor_paylist:
                 cancion_original = cancion_playlist_original.value
                 nueva_cancion = Cancion(cancion_original.titulo, cancion_original.artista, cancion_original.duracion)
                 self.sub_playlist.append(nueva_cancion)
+
                 print(f"✅ {titulo} agregada a la subplaylsit. ")
                 return
+            
+            cancion_playlist_original = cancion_playlist_original.next
             
         print(f"❌ La cancion {titulo} no se encontro en la playlist orginal.")
 
@@ -177,26 +180,38 @@ class Gestor_paylist:
         for _ in range(self.playlist.size):
             verificador = cancion_actual.prev
             mayor = True
+           
             if sub_playlist_por_tiempo.size == 0 :
-                sub_playlist_por_tiempo.append(cancion_actual)
-                cancion_actual.next
+                cancion = cancion_actual.value
+                nueva_cancion = Cancion(cancion.titulo, cancion.artista, cancion.duracion)
+                sub_playlist_por_tiempo.append(nueva_cancion)
+            
             else:
                 for _ in  range (self.playlist.size -1 ):
                     if verificador.value.duracion > cancion_actual.value.duracion:
                         mayor = False
-                        break
+                        
+
                     verificador= verificador.prev
                     
                 if mayor:
                     cancion = cancion_actual.value
                     nueva_cancion = Cancion(cancion.titulo, cancion.artista, cancion.duracion)
                     sub_playlist_por_tiempo.append(nueva_cancion)
+                       
+                    
+               
             
-            cancion_actual= cancion_actual.next
+        cancion_actual= cancion_actual.next
 
         
 
         print("sub playlist por duraciones mayores")
+        cancion_a = sub_playlist_por_tiempo.head
+        for _ in range(sub_playlist_por_tiempo.size):
+            print(f"{cancion_a.value.titulo}, {cancion_a.value.artista}, {cancion_a.value.duracion}s")
+        cancion_a = cancion_a.next
+
 
 
             

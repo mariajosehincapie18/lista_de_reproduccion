@@ -1,5 +1,3 @@
-anda sola,  don omar, 11
-bandolero,  don omar, 14
-romantico de lunes, feid, 11
-milagros, karol g, 13
-garcia, kanny, 15
+milagros,  karol g, 13
+anda sola,   don omar, 11
+bandolero,   don omar, 14

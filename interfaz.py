@@ -16,6 +16,7 @@ class Interfaz:
             print("9️⃣  Adelantar una cancion: ")
             print("🔟  Generar una subplaylist: ")
             print("❌. Salir")
+            print("❌❌. sub duracion mayores")
 
             opcion= input("Eligen una opcion: ")
 
@@ -88,6 +89,8 @@ class Interfaz:
                 else:
                     gestor.guardar_playlist()
                     break
+            elif opcion =="xx":
+                gestor.generar_sub_playlist_por_tiempo()
 
 
 

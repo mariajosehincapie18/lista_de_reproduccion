@@ -107,9 +107,7 @@ class Reproductor():
     
         tiempo_calculado = int((porcentaje/100)* cancion.duracion)
         print(f"⏩ ADELNTANDO {porcentaje}% de la cancion {cancion.titulo}")
-        time.sleep(cancion.duracion - tiempo_calculado)
-
-        
+        time.sleep(cancion.duracion - tiempo_calculado) 
         self.cancion_actual = self.cancion_actual.next
 
 
